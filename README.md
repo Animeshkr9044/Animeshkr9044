@@ -1,6 +1,6 @@
 <h1 align="center">Hi 👋, I'm Animesh Kumar</h1>
 <h3 align="center">Aspiring Machine Learning Engineer with a strong foundation in data preprocessing, feature engineering, and model evaluation.</h3>
-<img align="right" alt= "coding" width="100" src="https://www.skywavelabs.com/wp-content/uploads/2021/09/deep-learning.gif">
+<img align="right" alt= "coding" width="200" src="https://www.skywavelabs.com/wp-content/uploads/2021/09/deep-learning.gif">
 
 - 🌱 I’m currently learning **NLP,large language model (LLM),TensorFlow,OpenCV,**
 
