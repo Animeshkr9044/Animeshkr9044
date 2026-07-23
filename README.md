@@ -1,32 +1,77 @@
 <h1 align="center">Hi, I'm Animesh 👋</h1>
 
 <p align="center">
-  <b>ML &amp; Backend Engineer @ Deccan AI</b> · I build the backend that AI runs on.
+  <b>ML &amp; Backend Engineer @ Deccan AI</b><br/>
+  I build systems that run themselves — and I run my own workflow on them too.
 </p>
 
 <p align="center">
-  Agents · self-running loops · context management · observability · high-throughput infra
+  <i>two things I care about most: <b>context</b> (giving agents the right knowledge) and <b>loops</b> (systems that keep working without me babysitting them)</i>
 </p>
 
 ---
 
-### What I build
+## 👨‍💻 About me
 
-- ⚙️ **High-throughput AI backends** — a multi-tenant generation platform doing **2.5M+ jobs/day** across image, video and text, on Celery / Kafka / Redis / PostgreSQL
-- 🔌 **Provider-adapter systems** — one layer over **20+ AI models across 5 modalities**, with rate limiting, key rotation and concurrency control
-- 🤖 **Agents & loops** — a real-time GPT-4o voice-interview agent on LiveKit; Crew.ai multi-agent pipelines; small autonomous agents that run on my own hardware
-- 🔎 **Retrieval at scale** — hybrid **BM25 + Qdrant** search over **600K+ documents** with an NLP query-to-filter agent
-- 📊 **Observability** — Prometheus + Langfuse, queue-depth / latency / failure-rate dashboards, so failures surface before users feel them
+Early engineer (**#26**) at Deccan AI — joined at 0→1, now 200+ people and Series A.
+By day I build high-throughput AI backends; on the side I build small autonomous
+agents that live on my own hardware and handle the boring parts of my life.
 
-Early engineer (**#26**) at Deccan AI — joined at 0→1, now 200+ people, Series A.
+- ⚙️ backend & distributed systems · 🤖 agents · 🔁 self-running loops · 📊 observability
+- 📍 Hyderabad, India · open to remote AI-infra / backend roles
 
-### Featured
+## 🛠️ Stuff I've built
 
-- **[context-layer](https://github.com/Animeshkr9044)** — design for a living, self-managing context layer for repos: an MCP-mediated `docs/` folder that agents read/write/fetch through, every interaction logged, rendered (mermaid/HTML) for humans and kept fresh automatically
+**Production @ Deccan AI**
+- **Media Studio** — multi-modal generation backend, **2.5M+ jobs/day**, 20+ models across 5 modalities · Celery · Kafka · Redis · PostgreSQL · Prometheus + Langfuse
+- **AI Interviewer** — real-time GPT-4o voice agent on LiveKit
+- **Talent Intelligence** — 7-microservice resume pipeline · CDC orchestrator · BM25 + Qdrant hybrid search over **600K+ docs**
+
+**On the side**
+- **context-layer** — a living, self-managing context layer for repos (MCP-mediated `docs/`, rendered for humans, auto-updated)
+- **apply-agent** — a CDP-driven form-filler that applies to jobs, with a human in the approval seat
 - **[how-llms-work](https://github.com/Animeshkr9044/how-llms-work)** — ground-up notes: embeddings → attention → transformers → LLMs → MoE
 - **[keka-automation](https://github.com/Animeshkr9044/keka-automation)** — auto clock-in/out via macOS `launchd` + Chrome automation
 
-### Stack
+## 🧠 How I manage context
+
+Agents are only as good as what they know. I keep context **in the repo, as markdown**,
+readable by the agent and rendered for humans — and I'm building tooling
+(`context-layer`) so it updates itself and never goes stale.
+
+```mermaid
+flowchart LR
+    Code["codebase"] --> Docs["docs/ + AGENTS.md<br/>(markdown context)"]
+    Docs --> MCP["MCP layer"]
+    MCP --> Agent["coding agent"]
+    MCP --> Log["activity log<br/>(what the agent read / fetched / wrote)"]
+    Docs --> View["rendered view<br/>(mermaid / HTML for humans)"]
+    Agent -->|writes updates back| Docs
+```
+
+The principle: **one source of truth, two audiences** — the agent reads it, a human
+sees it rendered, and every interaction is captured.
+
+## 🔁 How I set up my loops
+
+My Mac stays on at home as a little always-on server. I control it from Telegram,
+and it acts through my email and the browser — but **nothing ships without my 👍**.
+
+```mermaid
+flowchart LR
+    Me["me (on my phone)"] -->|screenshot a job / person| TG["Telegram"]
+    TG --> Agent["agent on my always-on Mac"]
+    Agent --> Gmail["Gmail (reads the thread)"]
+    Agent --> PW["Playwright (fills forms)"]
+    Agent -->|draft + context| Approve{"my approval?"}
+    Approve -->|👍| Send["send / submit"]
+    Approve -->|edit| Agent
+```
+
+Human-in-the-loop by design: the agent does the paperwork, I make the call. That
+line — *it drafts, I decide* — is the whole point.
+
+## 🧰 Stack
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/-FastAPI-009688?logo=fastapi&logoColor=white)
@@ -38,10 +83,10 @@ Early engineer (**#26**) at Deccan AI — joined at 0→1, now 200+ people, Seri
 ![GCP](https://img.shields.io/badge/-GCP-4285F4?logo=googlecloud&logoColor=white)
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white)
 ![LiveKit](https://img.shields.io/badge/-LiveKit-1FD5F9?logo=livekit&logoColor=black)
-![LLMs](https://img.shields.io/badge/-LLMs%20%2F%20RAG-6E56CF)
+![LLMs / RAG](https://img.shields.io/badge/-LLMs%20%2F%20RAG-6E56CF)
 ![Prometheus](https://img.shields.io/badge/-Prometheus-E6522C?logo=prometheus&logoColor=white)
 
-### Connect
+## 🔗 Connect
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/iamanimesh)
 [![Email](https://img.shields.io/badge/Email-EA4335?logo=gmail&logoColor=white)](mailto:animesh.kr9044@gmail.com)
