@@ -6,70 +6,65 @@
 </p>
 
 <p align="center">
-  <i>two things I care about most: <b>context</b> (giving agents the right knowledge) and <b>loops</b> (systems that keep working without me babysitting them)</i>
+  <i>two things I think about all day: <b>context</b> and <b>loops</b></i>
 </p>
 
 ---
 
 ## 👨‍💻 About me
 
-Early engineer (**#26**) at Deccan AI — joined at 0→1, now 200+ people and Series A.
-By day I build high-throughput AI backends; on the side I build small autonomous
-agents that live on my own hardware and handle the boring parts of my life.
+Early engineer (**#26**) at Deccan AI — joined at 0→1, now 200+ and Series A.
+I work on high-throughput AI backends, agents, and observability. Off the clock I
+build small autonomous agents that live on my own hardware and handle the boring
+parts of my day.
 
-- ⚙️ backend & distributed systems · 🤖 agents · 🔁 self-running loops · 📊 observability
-- 📍 Hyderabad, India · open to remote AI-infra / backend roles
+📍 Hyderabad, India · open to remote AI-infra / backend roles
 
-## 🛠️ Stuff I've built
+## 🧠 How I think about context
 
-**Production @ Deccan AI**
-- **Media Studio** — multi-modal generation backend, **2.5M+ jobs/day**, 20+ models across 5 modalities · Celery · Kafka · Redis · PostgreSQL · Prometheus + Langfuse
-- **AI Interviewer** — real-time GPT-4o voice agent on LiveKit
-- **Talent Intelligence** — 7-microservice resume pipeline · CDC orchestrator · BM25 + Qdrant hybrid search over **600K+ docs**
+An agent is only as good as what it knows. Most teams dump knowledge in once —
+a README, a wiki, a `CLAUDE.md` — and then let it rot while the code moves on.
 
-**On the side**
-- **context-layer** — a living, self-managing context layer for repos (MCP-mediated `docs/`, rendered for humans, auto-updated)
-- **apply-agent** — a CDP-driven form-filler that applies to jobs, with a human in the approval seat
-- **[how-llms-work](https://github.com/Animeshkr9044/how-llms-work)** — ground-up notes: embeddings → attention → transformers → LLMs → MoE
-- **[keka-automation](https://github.com/Animeshkr9044/keka-automation)** — auto clock-in/out via macOS `launchd` + Chrome automation
-
-## 🧠 How I manage context
-
-Agents are only as good as what they know. I keep context **in the repo, as markdown**,
-readable by the agent and rendered for humans — and I'm building tooling
-(`context-layer`) so it updates itself and never goes stale.
+I don't think context should be a document you maintain. It should be a document
+that **maintains itself**: living where the work lives (the repo), written as
+markdown so the agent can read it, rendered so a human can *see* it, and updated
+as a side effect of the work actually happening. One source of truth, two
+audiences, always current.
 
 ```mermaid
 flowchart LR
-    Code["codebase"] --> Docs["docs/ + AGENTS.md<br/>(markdown context)"]
-    Docs --> MCP["MCP layer"]
-    MCP --> Agent["coding agent"]
-    MCP --> Log["activity log<br/>(what the agent read / fetched / wrote)"]
-    Docs --> View["rendered view<br/>(mermaid / HTML for humans)"]
-    Agent -->|writes updates back| Docs
+    Code["the work<br/>(code + changes)"] --> Ctx["context<br/>(markdown, in the repo)"]
+    Ctx --> Agent["agent reads it"]
+    Ctx --> Human["human sees it rendered<br/>(mermaid / HTML)"]
+    Agent -->|writes back as it works| Ctx
+    Agent --> Log["every read / write / fetch<br/>is captured"]
 ```
 
-The principle: **one source of truth, two audiences** — the agent reads it, a human
-sees it rendered, and every interaction is captured.
+Get context right and everything downstream — agents, teammates, future-you — gets
+cheaper.
 
-## 🔁 How I set up my loops
+## 🔁 On being a loop engineer
 
-My Mac stays on at home as a little always-on server. I control it from Telegram,
-and it acts through my email and the browser — but **nothing ships without my 👍**.
+I'd rather design the loop than do the task. Anything I do more than twice, I want
+running on its own.
+
+But automation without a human at the decision point is just faster mistakes. So
+the loops I build follow one rule: **the loop does the work, I make the call.** It
+drafts, it fetches, it fills things in — then it stops, shows me, and waits. My Mac
+stays on at home; I steer it from my phone; nothing ships without my 👍.
 
 ```mermaid
 flowchart LR
-    Me["me (on my phone)"] -->|screenshot a job / person| TG["Telegram"]
-    TG --> Agent["agent on my always-on Mac"]
-    Agent --> Gmail["Gmail (reads the thread)"]
-    Agent --> PW["Playwright (fills forms)"]
-    Agent -->|draft + context| Approve{"my approval?"}
-    Approve -->|👍| Send["send / submit"]
-    Approve -->|edit| Agent
+    Trigger["a trigger<br/>(a message, a push, a schedule)"] --> Loop["the loop<br/>(runs on its own)"]
+    Loop --> Work["does the work<br/>(draft / fetch / fill)"]
+    Work --> Gate{"my call?"}
+    Gate -->|👍| Act["it acts"]
+    Gate -->|nope| Loop
+    Loop --> Obs["observable the whole way<br/>(I can see what it did)"]
 ```
 
-Human-in-the-loop by design: the agent does the paperwork, I make the call. That
-line — *it drafts, I decide* — is the whole point.
+Good loops are **autonomous, observable, and interruptible.** That's the kind of
+engineer I am.
 
 ## 🧰 Stack
 
